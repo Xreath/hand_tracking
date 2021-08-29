@@ -26,9 +26,8 @@ while True:
                 cx,cy=int(lm.x*image_width),int(lm.y*image_height)     
                 
                 hello[str(id)] =(cx,cy)  
-                if(id>13):
+                if(id>9):
                     cv2.line(image, hello["0"],hello["9"], (255, 0, 0), 4)
-                    cv2.line(image, (0, hello["0"][1]), (image_width, hel lo["0"][1]), (255, 255, 255), 2)
                     
             mpDrawing.draw_landmarks(image,handMHL,mpHands.HAND_CONNECTIONS)
 
@@ -49,3 +48,5 @@ cap.release()
 cv2.destroyAllWindows()
 
 
+if __name__ =="main":
+    main()
