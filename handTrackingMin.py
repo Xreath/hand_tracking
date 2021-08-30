@@ -17,8 +17,11 @@ def get_angle(p1, p2, p3):
     m2 = gradient_calculate(p1, p3)
     angR = math.atan((m2-m1)/(1+(m2*m1)))
     angR = round(math.degrees(angR))
-    angR = angR-7
-    return  -angR
+    angR = -(angR-7)
+    if(angR<0):
+        angR=180+angR
+        return angR
+    return  angR
 
 
 def which_hand(results,):
@@ -60,8 +63,7 @@ while True:
                 if(id>13):
                     if(label_array_hand[0]=="Right"):
                         cv2.line(image, landmark_dict["0"], landmark_dict["9"], (255, 0, 0), 4)
-                        cv2.line(image, (0, landmark_dict["0"][1]), (image_width, landmark_dict["0"][1]),
-                                 (255, 255, 255), 2)
+                       # cv2.line(image, (0, landmark_dict["0"][1]), (image_width, landmark_dict["0"][1]),(255, 255, 255), 2)
                         angle = get_angle(landmark_dict["0"], landmark_dict["9"], (0, landmark_dict["0"][1]))
 
                         cv2.putText(image, "Angle: " + str(angle), (450, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0),2)
